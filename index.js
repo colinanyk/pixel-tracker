@@ -41,7 +41,8 @@ function middleware (req, res, next) {
     , host : req.headers.host
     , cache : qs.parse(req.headers['cache-control']) || {}
     , referer : (req.headers.referer || req.headers.referrer || 'direct')
-    , params : (req.params || {})
+    , params : (req.params || {}),
+    , reverseIp: req.headers['x-forwarded-for']
   }
 
   req.query = req.query || {}
